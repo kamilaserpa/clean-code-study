@@ -74,7 +74,7 @@ Um método "m" de uma classe "C" só deve chamar:
 
 Deve-se evitar Train Wreck (Acidente de Trem): x.getY().getZ().
 
-<img src="images/lei-demeter.png" alt="Lei Demeter" width="150" />
+<img src="images/lei-demeter.png" alt="Lei Demeter" width="200" />
 
 ## Acoplamento e Coesão
 
@@ -188,10 +188,10 @@ E refatoração em em [c02names\Refactoring](src\main\java\refactown\cleancode\c
  - Adicione ou evite contexto quando necessário. Contexto desnecessário no exemplo: `EnderecoDoCliente enderecoDeCobrancaDoCliente=new EnderecoDoCliente();`
  - Evite `números mágicos`, valores numéricos inseridos no meio do código e não são inseridos em uma variável com nome descritivo. Deve-se criar uma constante para o número mágico, sendo passível de busca e rastreio no código.
 
-### Código Ruim
+#### Código Ruim (Nomes)
 
 Exemplo de código ruim em [megasena/MegaSenaV0](src\main\java\refactown\cleancode\megasena\MegaSenaV0.java).
-Em [megasena/MegaSenaV3](src\main\java\refactown\cleancode\megasena\MegaSenaV3.java) já se tem uma nomenclatura mais descritiva, funções separadas para cada atividade, utilização do stream em local do for, recurso mais novo jo java, formatação.
+Em [megasena/MegaSenaV3](src\main\java\refactown\cleancode\megasena\MegaSenaV3.java) já se tem uma nomenclatura mais descritiva, funções separadas para cada atividade, utilização do stream em local do for, recurso mais novo do java, formatação.
 
 **Problemas**
  - Nomes ruins
@@ -202,6 +202,25 @@ Em [megasena/MegaSenaV3](src\main\java\refactown\cleancode\megasena\MegaSenaV3.j
 **Dificuldades**
  - Legibilidade: confuso
  - Testabilidade: alta complexidade
+
+### Filosofia sobre Comentários
+"Qualquer um pode escrever código que o computador entenda. Bons programadores escrevem códigos que os humanos entendem". *Martin Fowler*
+
+ - Comentários são a última opção do programador.
+ - O programador deve expressar-se no código.
+ - Comunique, não codifique (outros devem ler).
+ - Comentário pode estar compensando código ruim.
+ - Alguns comentários são bons ou necessários. 
+
+Evitar:
+ - comentários ruidosos, muito longos ou repettivos
+ - Imperativos (i.e em todas as funções)
+ - Marcadores de posição ////////// ou ********
+ - Comentários em HTML no meio do código Java
+ - Cabeçalhos de funções (prefira um bom nome)
+ - Javadoc em código não público
+
+Resumindo: Comentário é o último recurso.
 
 ## Developer
 Kamila Serpa

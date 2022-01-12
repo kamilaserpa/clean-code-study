@@ -13,7 +13,7 @@ public class Comments {
 		// verifica se o pedido não está cancelado nem tem mais de 1 ano
 		if (!order.getCancelled() && order.getDate().isBefore(order.getDate().plusDays(365)))
 
-			if (order.isValid())
+			if (order.isValid()) // O próprio Pedido deve encapsular se está válido ou não, evitando duplicação
 				System.out.println("");
 
 	}
@@ -31,7 +31,7 @@ public class Comments {
 	    try {
 	    	FileInputStream stream = new FileInputStream("file.properties");
 	        load(stream);
-	    } catch (Exception e){
+	    } catch (Exception e){ // Adicionou comentário em vez de tratar exceção
 	        // Não havia nenhum arquivo para ser lido
 	        // Todos já foram carregados
 	    }
@@ -39,7 +39,7 @@ public class Comments {
 
 	// Efetua logon passando "usuário" e "senha" e recebe
 	// o usuário logado
-	public LoggedUser logon(String username, String password){
+	public LoggedUser logon(String username, String password){ // Código expressivo, comentário desnecessário
 	    // TODO ("implementar quando o SSO ficar pronto")
 	    return new LoggedUser("Mock", "Mock");
 	}
@@ -52,6 +52,7 @@ public class Comments {
 	}
 
 	public void save (String cpfCnpj){
+	// Código morto comentado, o desenvolvedor não teve coragem de remover o código morto e deixar apenas o essencial
 
 	    /*
 	    // trim é importante, pois pode vir CPF(11) ou CNPJ(14)
