@@ -221,6 +221,28 @@ Evitar:
  - Javadoc em código não público
 
 Resumindo: Comentário é o último recurso.
+Exemplo de código em [c0comments/Comments](src\main\java\refactown\cleancode\c04comments\Comments.java).
+
+### Filosofia sobre Formatação
+
+ - Atenção ao "code convention" da linguagem
+ - O projeto deve ter um "code style" (bom ou ruim)
+ - Qualquer "code style" é melhor que nenhum
+ - A formatação automática evita muitas brigas
+ - Formatação vertical: metáfora do jornal (leitura de cima para baixo, do mais geral para mais específico), distância vertical, espaçamento e continuidade vertical.
+ - Formatação horizontal: Identação, espaçamento e continuidade horizontal. Pular linha quando se completa um raciocínio.
+     - Variáveis de instância: antes dos métodos
+     - Declaração de variável: atribuição, o mais próximo possível de onde será usada
+     - Funções dependentes: verticalmente próximas
+     - Afinidade Conceitual: mesma convenção de nomes atuam na mesma tarefa devem ficar próximas
+ - Deixe a IDE trabalhar: espaçamentos automáticos, identação padrão, quebras de linha
+
+Evitar:
+ - Espaçamentos manuais
+ - Mais de 120 caracteres por linha (estar atento ao code style da equipe, interessante caber na tela)
+
+Resumindo: Seguir "code convention" da linguagem e manter a paz com a equipe combinando com os demais.
+       
 
 ## Developer
 Kamila Serpa
