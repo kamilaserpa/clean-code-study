@@ -1,5 +1,5 @@
 # Clean Code (Udemy)
-Este projeto é parte integrante do curso sobre o livro "Clean Code" disponibilizado na Udemy.
+Este projeto é parte integrante do curso disponibilizado na Udemy sobre o livro "Clean Code" (Robert C. Martin).
 
 Para maiores informações acesse o [curso na Udemy](https://www.udemy.com/course/clean-code-na-pratica/?referralCode=24F598EE94626485768C)
 
@@ -242,7 +242,42 @@ Evitar:
  - Mais de 120 caracteres por linha (estar atento ao code style da equipe, interessante caber na tela)
 
 Resumindo: Seguir "code convention" da linguagem e manter a paz com a equipe combinando com os demais.
-       
+
+### Funções
+ - Funções devem ser *pequenas* (<= 20 linhas)
+ - Funções devem fazer apenas <b>uma coisa</b>
+    - É melhor ler e entender uma coisa de cada vez
+    - É melhor testar uma coisa de cada vez
+ - Devem ter nomes descritivos do que fazem
+ - Somente <b>um nível de abstração</b> por função
+    - Abstração, capacidade de separar o essencial do não essencial
+    - Fazer uma ação principal, um nivel de abstração como a função calculaPremio() em [MegaSenaV5](src\main\java\refactown\cleancode\megasena\MegaSenaV5.java)
+    - Fazer <b>indireção</b>, delegando a um segundo nivel de abstração como as funções isApostaValida() e calculaAcertos() em [MegaSenaV5](src\main\java\refactown\cleancode\megasena\MegaSenaV5.java)
+    - Cada conceito em seu lugar apropriado.
+ - Funções devem ter poucos parâmetros.
+ - Prefira <b>exceções</b> a retorno de códigos de erro.
+   
+ - Efeitos colaterais devem ser evitados ao máximo, deve manipular atributos apenas de dentro do escopo da função.
+ - Quanto mais funções puras melhor
+ - Quanto mais autocontida mais fácil de testar
+ - Utilizar programação polimórfica em detrimento de programação procedural. Exemplo em [Employee](src\main\java\refactown\cleancode\c03functions\Employee.java)
+ - Quantidade de parâmetros deve ser a <b>menor possível</b>. Se a quantidade de parâmetros é muito grande, pode ser usado um objeto como parâmetro, encapsulando os demais.
+ - Evitar <b>parâmetro seletor</b>, ele já indica logo na assinatura que uma função faz duas coisas. Indesejado, parâmetro booleano indicando dois comportamentos. O ideal é fazer duas funções separadas.
+ - Evitar <parâmetro de saída</b>, enviar um parâmetro que será manipulado na função e capturado posteriormente. O ideal é não passar esse parâmetro e colocar a saída como um objeto apenas no retorno.
+ - As funções devem somente <b>fazer ou responder</b> algo, mas não ambos. Ou altera o estado de um objeto ou retorna informação sobre ele.
+ - <b>Tratamento de erro</b> é uma coisa só. O "try" deve ser a primeira linha da função e não deve haver nada depois do fim do bloco "try/catch/finally".
+
+<b>Evite Repetição (DRY)</b>
+ - Indireção, extração etc podem gerar duplicação
+ - Funções menores e especializadas requerem reúso (SRP)
+
+<b>Faça e Refaça com Confiança</b>
+ - Comece fazendo funcionar e depois refatore
+ - Tenha cobertura de testes para ter confiança
+
+<b>Funções são verbos do domínio</b>
+ - Uma hierarquis de funções conta uma estória
+ - Níveis de abstração ajudam na leitura da estória
 
 ## Developer
 Kamila Serpa

@@ -4,9 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RockPaperScissors {
-	
+
 	private static List<Character> VALID_CHOOSES =  Arrays.asList('R', 'S', 'P');
 
+	// Lista VALID_CHOOSES declarada fora da função, por isso ela não é pura.
 	public static int rockPaperScissors(char first, char second) {
 	    if (!VALID_CHOOSES.contains(first)) {
 	        throw new IllegalArgumentException("Invalid first choose:" + first + ". Use " + VALID_CHOOSES);

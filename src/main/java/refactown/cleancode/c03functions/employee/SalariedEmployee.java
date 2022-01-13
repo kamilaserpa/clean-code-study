@@ -6,6 +6,7 @@ public class SalariedEmployee extends Employee{
 		super(name, Type.SALARIED);
 	}
 
+	// Abstrai o calculo do pagamento do outros lugares da aplicação, centralizando-o no proprio objeto referente à Assalariado
 	@Override
 	public double calculatePay() {
 		return 3.0;

@@ -8,6 +8,10 @@ open abstract class Employee(val name: String, val type: Type) {
 
 enum class Type { COMMISSIONED, HOURLY, SALARIED; }
 
+/*
+ Programação polimórfica. Atribuindo ações para funções nos switchs, que podem chamar ações
+nas próprias classes como refactown.cleancode.c03functions.employee.SalariedEmployee.calculatePay()
+ */
 fun calculatePay(employee: Employee): Double {
     return when (employee.type) {
         Type.COMMISSIONED -> calculateCommissionedPay(employee)

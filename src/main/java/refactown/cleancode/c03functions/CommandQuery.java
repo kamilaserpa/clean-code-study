@@ -15,10 +15,10 @@ public class CommandQuery {
 	}
 
 	public static void main(String[] args) {
-		if (sett("username", "bill")) {}
+		if (sett("username", "bill")) {} // Consulta e comando (deve ser evitado)
 
-	    if (attributeExists("username")){
-	        setAttribute("username", "bill");
+	    if (attributeExists("username")){ // Apenas Consulta
+	        setAttribute("username", "bill"); // Apenas Comando (melhor)
 	    }
 	}
 }

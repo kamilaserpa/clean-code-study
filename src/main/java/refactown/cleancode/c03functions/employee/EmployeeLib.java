@@ -2,6 +2,7 @@ package refactown.cleancode.c03functions.employee;
 
 public class EmployeeLib {
 
+	// Exemplo de programação procedural, onde o switch é repetido. Indesejado.
 	public static double calculatePay(Employee employee) {
 		switch (employee.getType()) {
 		case COMMISSIONED:
