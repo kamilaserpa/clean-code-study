@@ -4,6 +4,14 @@ import com.google.gson.Gson
 
 typealias JsonParserFunction = (String, Class<*>) -> Any
 
+/*
+ * Problemas:
+ * - Não retorna uma exceção
+ * - Abafa exceção do Gson
+ * - Retorna "null"
+ * - Imprime direto no console
+ *
+ */
 fun fromJsonV0(json: String, clazz: Class<*>): Any?{
     val gson = Gson()
     try {
@@ -14,6 +22,10 @@ fun fromJsonV0(json: String, clazz: Class<*>): Any?{
     }
 }
 
+/*
+* Problemas:
+* - Abafa exceção do Gson
+*/
 fun fromJsonV1(json: String, clazz: Class<*>): Any{
     val gson = Gson()
     try {

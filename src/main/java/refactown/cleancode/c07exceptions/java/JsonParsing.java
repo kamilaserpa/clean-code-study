@@ -14,6 +14,10 @@ public class JsonParsing {
 		}
 	}
 
+	/*
+	* Problemas:
+	* - Abafa exceção do Gson. Consequência: Omissão do erro raiz (causa)
+	*/
 	public static Object fromJsonV1(String json, Class<?> clazz) {
 		Gson gson = new Gson();
 		try {
@@ -31,6 +35,7 @@ public class JsonParsing {
 		try {
 			return gson.fromJson(json, clazz);
 		} catch (Exception e) {
+			// Exceção customizada
 			throw new JsonException("Parsing error. Json text:$json", e); // CAUSE
 		}
 	}

@@ -359,6 +359,48 @@ Basicamente afirma que um objeto não deve observar o interior dos objetos que e
 
 Em kotlin a operação `x = a?.b?.c?.d` garante uma navegação segura pois a linguagem verifica campos nulos, evitando NullPointer Exception nesse caso. Já em java `x = a.getB().getC().getD()` seria necessário realizar três testes de nulidade, adicionando complexidade por falta de recursos na linguagem. Numa estrutura de dados isso seria possível, pela imutabilidade das sua spropriedades e a proibição de "null".
 
+## Tratamento de Erro
+
+ - Use <b>exceções</b> em vez de retornar códigos de erro
+ - Prefira exceções não verificadas (unchecked). Mais específico para o java. Exceções *checked* obrigam o chamados do método a inserir um *try/catch*. Algo já vem sendo abandonado, exceções *unchecked* são mais indicadas, código mais limpo e não atribuem grande ganho ao sistema.
+ - Forneça exceções com <b>contexto</b> e sem abafamento. Não remover dados da exceção, ou capturar uma exceção e retornar outra customizada com erro genérico.
+ - Pense no design do "try-catch-finally" antes. Entenda que faz parte do código.
+ - Defina exceções pensando no chamador. Como elas serão tratadas.
+ - Cada "catch" deve fazer apenas uma coisa.
+ - Não retorne nem passe <b>"null"</b>. No kotlin a linguagem já sugere isso dificultando criar propriedades nuláveis. Passar nullo obriga o consumidor do método tratar/verificar esse nulo.
+ - Dê preferência às exceções já fornecidas pela linguagem (efective java). Por exemplo, no cálculo da megasena caso algum parâmetro esteja inválido, é indicado retornar `IlegalArgumentException` e não  `ApostaInvalida`, pois dificulta a identificação do erro.
+
+#### Código Ruim - Exemplo 1
+Em [JsonParsing](src\main\kotlin\refactown\cleancode\c07exceptions\JsonParsing.kt):
+
+```java
+fun fromJsonV0(json: String, clazz: Class<*>): Any?{
+    val gson = Gson()
+    try {
+        return gson.fromJson(json, clazz)
+    } catch (e: Exception){
+        println("Parsing error. Json text:$json")
+        return null
+    }
+}
+```
+
+<b>Problemas</b>
+ - Não retorna uma exceção
+ - Abafa exceção do Gson
+ - Retorna "null"
+ - Imprime direto no console
+
+<b>Consequências</b>
+ - Contrato baseado em "null"
+ - Omissão do erro raiz (causa)
+ - Força a testar nulidade
+   - kotlin: `?.`
+   - java: `if (result != null)
+ - Log inadequado e ineficiente
+  
+Código de exceção mais adequado em [`fromJsonV2`](src\main\kotlin\refactown\cleancode\c07exceptions\JsonParsing.java).
+
 ## Developer
 Kamila Serpa
 

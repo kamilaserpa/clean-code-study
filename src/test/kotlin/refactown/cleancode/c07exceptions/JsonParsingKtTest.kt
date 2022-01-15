@@ -40,6 +40,7 @@ internal class JsonParsingKtTest {
         }
     }
 
+    /* Testando Exceção  */
     @Test
     fun testV2(){
         // Parsing ok
