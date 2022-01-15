@@ -173,8 +173,8 @@ O primeiro código possivelmente não é o melhor possível, o mais expressivo, 
 
 ### Filosofia sobre Nomes
 
-Exemplo de código ruim em [c02names\BadCode](src\main\java\refactown\cleancode\c02names\BadCode.java).
-E refatoração em em [c02names\Refactoring](src\main\java\refactown\cleancode\c02names\Refactoring.java).
+Exemplo de código ruim em [c02names/BadCode](src/main/java/refactown/cleancode/c02names/BadCode.java).
+E refatoração em em [c02names/Refactoring](src/main/java/refactown/cleancode/c02names/Refactoring.java).
 
  - Nomes são muito importantes (especialmente em OO)
  - Use nomes que `revelam seu propósito`, evite nomes não pronunciáveis
@@ -190,8 +190,8 @@ E refatoração em em [c02names\Refactoring](src\main\java\refactown\cleancode\c
 
 #### Código Ruim (Nomes)
 
-Exemplo de código ruim em [megasena/MegaSenaV0](src\main\java\refactown\cleancode\megasena\MegaSenaV0.java).
-Em [megasena/MegaSenaV3](src\main\java\refactown\cleancode\megasena\MegaSenaV3.java) já se tem uma nomenclatura mais descritiva, funções separadas para cada atividade, utilização do stream em local do for, recurso mais novo do java, formatação.
+Exemplo de código ruim em [megasena/MegaSenaV0](src/main/java/refactown/cleancode/megasena/MegaSenaV0.java).
+Em [megasena/MegaSenaV3](src/main/java/refactown/cleancode/megasena/MegaSenaV3.java) já se tem uma nomenclatura mais descritiva, funções separadas para cada atividade, utilização do stream em local do for, recurso mais novo do java, formatação.
 
 **Problemas**
  - Nomes ruins
@@ -221,7 +221,7 @@ Evitar:
  - Javadoc em código não público
 
 Resumindo: Comentário é o último recurso.
-Exemplo de código em [c0comments/Comments](src\main\java\refactown\cleancode\c04comments\Comments.java).
+Exemplo de código em [c0comments/Comments](src/main/java/refactown/cleancode/c04comments/Comments.java).
 
 ### Filosofia sobre Formatação
 
@@ -244,6 +244,7 @@ Evitar:
 Resumindo: Seguir "code convention" da linguagem e manter a paz com a equipe combinando com os demais.
 
 ### Funções
+
  - Funções devem ser *pequenas* (<= 20 linhas)
  - Funções devem fazer apenas <b>uma coisa</b>
     - É melhor ler e entender uma coisa de cada vez
@@ -251,8 +252,8 @@ Resumindo: Seguir "code convention" da linguagem e manter a paz com a equipe com
  - Devem ter nomes descritivos do que fazem
  - Somente <b>um nível de abstração</b> por função
     - Abstração, capacidade de separar o essencial do não essencial
-    - Fazer uma ação principal, um nivel de abstração como a função calculaPremio() em [MegaSenaV5](src\main\java\refactown\cleancode\megasena\MegaSenaV5.java)
-    - Fazer <b>indireção</b>, delegando a um segundo nivel de abstração como as funções isApostaValida() e calculaAcertos() em [MegaSenaV5](src\main\java\refactown\cleancode\megasena\MegaSenaV5.java)
+    - Fazer uma ação principal, um nivel de abstração como a função calculaPremio() em [MegaSenaV5](src/main/java/refactown/cleancode/megasena/MegaSenaV5.java)
+    - Fazer <b>indireção</b>, delegando a um segundo nivel de abstração como as funções isApostaValida() e calculaAcertos() em [MegaSenaV5](src/main/java/refactown/cleancode/megasena/MegaSenaV5.java)
     - Cada conceito em seu lugar apropriado.
  - Funções devem ter poucos parâmetros.
  - Prefira <b>exceções</b> a retorno de códigos de erro.
@@ -260,10 +261,10 @@ Resumindo: Seguir "code convention" da linguagem e manter a paz com a equipe com
  - Efeitos colaterais devem ser evitados ao máximo, deve manipular atributos apenas de dentro do escopo da função.
  - Quanto mais funções puras melhor
  - Quanto mais autocontida mais fácil de testar
- - Utilizar programação polimórfica em detrimento de programação procedural. Exemplo em [Employee](src\main\java\refactown\cleancode\c03functions\Employee.java)
+ - Utilizar programação polimórfica em detrimento de programação procedural. Exemplo em [Employee](src/main/java/refactown/cleancode/c03functions/Employee.java)
  - Quantidade de parâmetros deve ser a <b>menor possível</b>. Se a quantidade de parâmetros é muito grande, pode ser usado um objeto como parâmetro, encapsulando os demais.
  - Evitar <b>parâmetro seletor</b>, ele já indica logo na assinatura que uma função faz duas coisas. Indesejado, parâmetro booleano indicando dois comportamentos. O ideal é fazer duas funções separadas.
- - Evitar <parâmetro de saída</b>, enviar um parâmetro que será manipulado na função e capturado posteriormente. O ideal é não passar esse parâmetro e colocar a saída como um objeto apenas no retorno.
+ - Evitar <b>parâmetro de saída</b>, enviar um parâmetro que será manipulado na função e capturado posteriormente. O ideal é não passar esse parâmetro e colocar a saída como um objeto apenas no retorno.
  - As funções devem somente <b>fazer ou responder</b> algo, mas não ambos. Ou altera o estado de um objeto ou retorna informação sobre ele.
  - <b>Tratamento de erro</b> é uma coisa só. O "try" deve ser a primeira linha da função e não deve haver nada depois do fim do bloco "try/catch/finally".
 
@@ -278,6 +279,85 @@ Resumindo: Seguir "code convention" da linguagem e manter a paz com a equipe com
 <b>Funções são verbos do domínio</b>
  - Uma hierarquis de funções conta uma estória
  - Níveis de abstração ajudam na leitura da estória
+
+### Objetos e Estrutura de Dados
+Os <b>objetos</b> usam abstrações para <b>esconder seus dados</b> e <b>expõem</b> funções que operam sobre eles.
+Objetos buscam menor conhecimento.
+Um exemplo de Objeto é a classe [Pedido](src/main/java/refactown/cleancode/c06objects/Pedido.java).
+
+<b>Estruturas de dados</b> <b>expõem seus dados</b> e não possuem funções significativas (get/set = acessores).
+Estruturas de dados (DTO) buscam imutabilidade.
+Kotlin tem uma palavra reservada para definir uma estrutura de dados: **"data"**. A sintaxe deixa clara a diferença entre uma estrutura de dados e demais classes/objetos.
+Numa Estrutura de Dados não se objetiva realizar encapsulamento, polimorfismo ou comportamentos mais complexas, apenas representar as propriedades.
+Um exemplo de Estrutura de Dados é a classe [PedidoDTO](src/main/java/refactown/cleancode/c06objects/PedidoDTO.java), observe que suas propriedades são imutáveis.
+
+#### Feature Envy (Inveja de Funcionalidade)
+Um objeto tem "inveja" da funcionalidade que deve ser implementada em outro objeto.
+No exemplo, na classe [Pedido](src/main/java/refactown/cleancode/c06objects/Pedido.java), o primeiro IF tem inveja de um dado que deve ser fornecido pelo <b>objeto</b> Pedido.
+Caso Pedido seja uma estrutura de dados, isso não seria problema.
+
+![Feature Envy](images/feature_envy.png)
+
+
+#### Procedural x Orientado a Objetos
+
+Há um exemplo de comparação entre abordagens Procedural e OO em [GeometryTest](src/main/java/refactown/cleancode/c06objects/book/GeometryTest.java).
+Caso haja uma situação em que seja necessário adicionar vários comportamentos a solução Orienta à Objetos é mais adequada, comportamentos como: cálculo de perímetro, cálculo de área.
+
+Caso seja necessário adicionar vários objetos para poucos comportamentos, talvez a situação mais expansível seja a Procedural, necessário análise. Exemplo de método procedural:
+
+```java
+public static double calculateArea(Object shape) {
+   if (shape instanceof Square) {
+      Square s = (Square)shape;
+      return s.getSide() * s.getSide(); // s.side
+   } else if (shape instanceof Rectangle) {
+      Rectangle r = (Rectangle) shape;
+      return r.getHeight() * r.getWidth(); 
+   } else if (shape instanceof Circle) {
+      Circle c = (Circle) shape;
+      return PI * c.getRadius() * c.getRadius();
+   }
+   throw new IllegalArgumentException("Unknown shape class:" + shape.getClass());
+})
+```
+
+#### Comparativo
+![Comparativo entre Estrutura de dados e Objetos](images/comparativo-objetos-estrutura-dados.png)
+
+Uma estrutura com apenas atributos deixa claro ser uma estrutura de dados. Em kotlin a expressão `data class` é utilizada para estrutura de dados.
+Uma classe com muitos comportamentos atuando sobre suas propriedades se configura como um objeto. 
+
+Porém é possível existir algo meio híbrido, e deve ser evitado, como em em [GeometryTest](src/main/java/refactown/cleancode/c06objects/FeatureEnvy.kt).
+
+```kotlin
+// EVITAR Classe que se confunde entre estrutura de dados e objeto
+// Métodos que possíbilitam acessar o cálculo de área de forma externa
+class HybridSquare(val side: Double) : Shape {
+    override fun area() = side * side
+}
+
+class HybridRectangle(val height: Double, val width: Double) : Shape {
+    override fun area() = height * width
+}
+
+class HybridCircle( val radius: Double) : Shape {
+    override fun area() = PI * radius * radius
+}
+// A própria classe tem o cálculo de área
+fun calculateAreaFeatureEnvy(shape: Any): Double {
+    return when (shape) {
+        is HybridSquare -> shape.side * shape.side
+        is HybridRectangle -> shape.height * shape.width
+        is HybridCircle -> PI * shape.radius * shape.radius
+        else -> throw IllegalArgumentException()
+    }
+}
+```
+#### Lei de Demeter sobre Objetos.
+Basicamente afirma que um objeto não deve observar o interior dos objetos que ele manipula. Aplica-se muito a objetos, e talvez não seja "bad smell" para estrutura de dados, pois há possibilidade em que ela não se aplica, por falta de opções.
+
+Em kotlin a operação `x = a?.b?.c?.d` garante uma navegação segura pois a linguagem verifica campos nulos, evitando NullPointer Exception nesse caso. Já em java `x = a.getB().getC().getD()` seria necessário realizar três testes de nulidade, adicionando complexidade por falta de recursos na linguagem. Numa estrutura de dados isso seria possível, pela imutabilidade das sua spropriedades e a proibição de "null".
 
 ## Developer
 Kamila Serpa
