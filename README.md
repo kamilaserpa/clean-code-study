@@ -359,7 +359,7 @@ Basicamente afirma que um objeto não deve observar o interior dos objetos que e
 
 Em kotlin a operação `x = a?.b?.c?.d` garante uma navegação segura pois a linguagem verifica campos nulos, evitando NullPointer Exception nesse caso. Já em java `x = a.getB().getC().getD()` seria necessário realizar três testes de nulidade, adicionando complexidade por falta de recursos na linguagem. Numa estrutura de dados isso seria possível, pela imutabilidade das sua spropriedades e a proibição de "null".
 
-## Tratamento de Erro
+### Tratamento de Erro
 
  - Use <b>exceções</b> em vez de retornar códigos de erro
  - Prefira exceções não verificadas (unchecked). Mais específico para o java. Exceções *checked* obrigam o chamados do método a inserir um *try/catch*. Algo já vem sendo abandonado, exceções *unchecked* são mais indicadas, código mais limpo e não atribuem grande ganho ao sistema.
@@ -399,7 +399,18 @@ fun fromJsonV0(json: String, clazz: Class<*>): Any?{
    - java: `if (result != null)
  - Log inadequado e ineficiente
   
-Código de exceção mais adequado em [`fromJsonV2`](src\main\kotlin\refactown\cleancode\c07exceptions\JsonParsing.java).
+Código de exceção mais adequado em [`fromJsonV2`](src\main\kotlin\refactown\cleancode\c07exceptions\JsonParsing.java). Teste em [JsonParsingKtTest](src\test\kotlin\refactown\cleancode\c07exceptions\JsonParsingKtTest.kt).
+
+### Fronteiras (boundary)
+ - Código de terceiro quase sempre é "infraestrutura". Onde deseja-se que seja em um módulo isolado com uma função específica, e apto a alteração de solução no futuro.
+ - Infraestrutura deve ser <b>isolada</b> do negócio. Possibilidade de trabalhar na infraestrutura ou no negócio isoladamente, com menos acoplamento.
+ - Testes de aprendizado são uma boa dica. Eles acabam documentando como o método funciona.
+
+![Caso de uso JsonParser](images/fronteiras-estudo-de-caso.png)
+O consumidor do método chama a interface e desconhece a implementação de infraestrutura de parser do Json. Pois apenas a implementação da interface é responsável pela implementação.Boa prática.
+
+<b>Há necessidade de criar exceção customizada?</b>
+Não há uma resposta exata. De acordo com os princípios de acoplamento e simplicidade do código seria criada uma exceção JsonException, encapsulando a do Gson ou do Jackson. Pois o cliente se prepara para receber uma exceção específica independente da implementação de infraestrutura escolhida. Além de não precisar importar uma exceção específica da library Gson ou Jackson, esse importa quebraria o desacoplamento entre consumidor e infraestrutura criado anteriormente.
 
 ## Developer
 Kamila Serpa

@@ -20,7 +20,7 @@ class LogonControllerTest {
     @Test
     public void  logonInjectDependency() {
         User userMock = new User("admin", "admin");
-        LogonController controller = inject(LogonController.class);
+        LogonController controller = inject(LogonController.class); // Teste abstrai totalmente a implementação
         User user = controller.logon("admin", "123");
 
         assertEquals(userMock.getLogin(), user.getLogin());
