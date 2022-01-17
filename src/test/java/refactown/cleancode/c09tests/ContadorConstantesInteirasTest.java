@@ -12,9 +12,11 @@ public class ContadorConstantesInteirasTest {
 
     @Test
     public void testContagem(){
-        // parte1: preparação / cenário (s)
+        // parte1 do Teste de Unidade: preparação / cenário (s). Onde são criados objetos, adicionados valores.
         ContadorConstantesInteiras contador = new ContadorConstantesInteiras();
-        // parte 3: validação
+        // parte 2: execução/ação
+
+        // parte 3: validação. Verifica se o resultado da ação foi o esperado.
         assertEquals(2, contador.contar(Classe1.class));
         assertEquals(-1, contador.contar(List.class));
         assertEquals(-1, contador.contar(Month.class));

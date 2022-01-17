@@ -7,7 +7,7 @@ import java.math.BigInteger
 
 fun countIntConstV3(clazz: Class<*>): Int{
     if (!isConstantClass(clazz)) return -1
-    val fields = getFieldsFromClass(clazz)
+    val fields = getFieldsFromClassAndSuperclass(clazz)
     var count = 0
     for (field in fields) {
         if (isIntegerField(field)) {
@@ -17,9 +17,9 @@ fun countIntConstV3(clazz: Class<*>): Int{
     return count
 }
 
-fun getFieldsFromClass(clazz: Class<*>): List<Field> {
+fun getFieldsFromClassAndSuperclass(clazz: Class<*>): List<Field> {
     return if (clazz.superclass != null && clazz.superclass != Any::class.java) {
-        clazz.declaredFields.asList() + getFieldsFromClass(clazz.superclass)
+        clazz.declaredFields.asList() + getFieldsFromClassAndSuperclass(clazz.superclass)
     } else clazz.declaredFields.asList()
 }
 

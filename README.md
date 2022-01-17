@@ -412,6 +412,35 @@ O consumidor do método chama a interface e desconhece a implementação de infr
 <b>Há necessidade de criar exceção customizada?</b>
 Não há uma resposta exata. De acordo com os princípios de acoplamento e simplicidade do código seria criada uma exceção JsonException, encapsulando a do Gson ou do Jackson. Pois o cliente se prepara para receber uma exceção específica independente da implementação de infraestrutura escolhida. Além de não precisar importar uma exceção específica da library Gson ou Jackson, esse importa quebraria o desacoplamento entre consumidor e infraestrutura criado anteriormente.
 
+### Testes de Unidade
+
+ - Teste de unidade dá feedback sobre o design
+ - O feedback deve chegar o quanto antes. Fazer testes de forma tempestiva.
+ - TDD é uma boa opção para tornar mais fácil
+ - Testes de unidade são atividade de construção
+ - Cobertura de testes provê confiança
+ - Refatoração sem conbertura pode ser uma aventura
+ - Teste também é código e deve ser limpo
+
+<b>Partes de um Teste de Unidade</b>
+ 1. Preparação / cenário(s): Onde são criados objetos, adicionados valores necessários para o teste.
+ 2. Ação / execução
+ 3. Validação: verifica se o resultado da ação foi o esperado (assert, assertEquals, etc)
+
+#### As 3 Regras do TDD
+![Três regras do TDD](images/tres-regras-tdd.png)
+
+Para exemplificar foram dados os requisitos abaixo e implementados no pacote java e kotlin em [`fromJsonV2`](src\main\kotlin\refactown\cleancode\c07exceptions\JsonParsing.java). Teste em [c09tests](src/main/java/refactown/cleancode/c09tests).
+![Requsitos de teste](images/tdd-requisitos-contador-constantes.png)
+
+O fluxo abordado foi:
+ - Construímos o primeiro teste que falha
+ - Desenvolvemos código a função básica que satisfaz o primeiro teste (apenas o suficiente para o primeiro teste)
+ - Construímos segundo teste com verificação de enuns e classes abstratas que falha
+ - Refatoramos o código principal e implementamos o necessário para satisfazer os requisitos
+ - Construímos terceiro teste com verificação de ensuperclasses que falha
+ - Refatoramos o código principal e implementamos o necessário para satisfazer o terceiro teste
+
 ## Developer
 Kamila Serpa
 
