@@ -22,7 +22,7 @@ public class JogadaSimples implements Jogada{
 	private final Jogador segundoJogador;
 	public JogadaSimples(Jogador primeiroJogador, Jogador segundoJogador) {
 		super();
-		if (primeiroJogador == null){
+		if (primeiroJogador == null){ // Clausula d guarda
 			throw new NullPointerException("O primeiro jogador é obrigatório");
 		}
 		if (segundoJogador == null){

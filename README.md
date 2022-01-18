@@ -493,6 +493,35 @@ A necessidade de <b>manutenção</b> tende a impactar somente uma parte do códi
 Complexidade ciclomática e cognitiva grande em [PedraPapelTesoura.class](src/main/java/refactown/cleancode/c03functions/PedraPapelTesoura.java).
 Na alteração feita para utilizar a implementação "JogadaSimples" em "ClassesMain", a classe "MelhorDeTres" não teve nenhum impacto.
 
+
+### Sistemas Complexos
+
+ - Sistemas precisam de separação de preocupações.
+ - Separe a <b>inicialização</b> do uso de um sistema.
+    - Inicialização e contexto (main()), variáveis de ambiente. 
+    - Main conhece o sistema. O Sistema ignora o Main.
+    - As demais classes não devem conhecer sobre o contexto de inicialização. 
+      Devem ser projetadas como se isso fosse ser resolvido para elas, e será.
+ - Sistemas beneficiam-se do uso de uma <b>DLS</b>.
+
+#### Modularização e Separação de Preocupações
+ - Criação de objetos e escopos superiores.
+ - Conexão com BD, I/O e efeitos colaterais.
+
+#### Injeção de dependência Via Construtor
+Injeção de dependências minimiza o acoplamento entre classes, além de facilitar os testes de unidade.
+O uso de CDI com *@inject* faz o mesmo trabalho automaticamente.
+Exemplo em `public JogadaSimples(Jogador primeiroJogador, Jogador segundoJogador) {` permitindo o teste em [JogadaTest.java](src/test/java/refactown/cleancode/c10classes/model/JogadaTest.java).
+Indica o que precisa pra funcionar.
+
+#### DLS - Domain Specific Language
+Classes e funções são <b>negócio</b> destilado. Código Expressivo.
+O domínio do problema e descrito na solução. DSL encapsula a lógica.
+Método com leitura semântica e que encapsula um comportamento.
+
+Exemplo: `melhorDeTres.temVencedor()`, pergunta é feita ao *MelhorDeTres* que é a centralização do jogo se ela possui vencedor e não atribuída essa lógica à outra classe.
+
+
 ## Developer
 Kamila Serpa
 
