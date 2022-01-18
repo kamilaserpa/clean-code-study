@@ -42,7 +42,8 @@ public class MelhorDeTres {
 	public boolean temVencedor() {
 		return scoreDoPrimeiro != scoreDoSegundo;
 	}
-	
+
+	// Encapsula aqui a regra para calculo do vencedor
 	public Jogador getVencedor() {
 		if (scoreDoPrimeiro > scoreDoSegundo) {
 			return jogada.getPrimeiroJogador();

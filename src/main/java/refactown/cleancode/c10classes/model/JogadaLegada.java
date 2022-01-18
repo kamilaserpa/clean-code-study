@@ -12,6 +12,7 @@ public class JogadaLegada implements Jogada {
 	public ResultadoJogada jogar() {
 		Mao primeira = primeiroJogador.jogar();
 		Mao segunda = segundoJogador.jogar();
+		// Ainda utiliza código legado PedraPapelTesoura.pedraPapelTesoura
 		int resultInt = PedraPapelTesoura.pedraPapelTesoura(primeira.getId(), segunda.getId());
 		Resultado resultadoDoPrimeiro = Resultado.of(resultInt);
 		return ResultadoJogada.of(resultadoDoPrimeiro);

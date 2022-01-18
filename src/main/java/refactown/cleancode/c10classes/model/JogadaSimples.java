@@ -8,6 +8,7 @@ public class JogadaSimples implements Jogada{
 	public ResultadoJogada jogar() {
 		Mao primeiraMao = primeiroJogador.jogar();
 		Mao segundaMao = segundoJogador.jogar();
+		// Se 1ª mao vence 2ª mao, leitura mais ubiqua, fácil compreensão
 		if (primeiraMao.vence(segundaMao)) {
 			return ResultadoJogada.PRIMEIRO_VENCE;
 		}

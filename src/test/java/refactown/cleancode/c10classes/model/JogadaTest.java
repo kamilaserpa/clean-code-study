@@ -8,6 +8,10 @@ import refactown.cleancode.c10classes.enums.Mao;
 import refactown.cleancode.c10classes.enums.ResultadoJogada;
 
 class JogadaTest {
+
+	// Possibilidade de testar com mãos determinadas,
+	// pois no método procedural era sempre pasado um valor randômico
+	// e não era possível ao teste ter resultado previsível
 	@Test void test() {
 		Jogador bill = new JogadorMock("Bill (Primeiro)", Mao.PAPEL);
 		Jogador bob = new JogadorMock("Bob (Segundo)", Mao.PEDRA);

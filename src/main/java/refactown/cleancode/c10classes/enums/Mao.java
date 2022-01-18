@@ -36,6 +36,8 @@ public enum Mao {
 		throw new IllegalArgumentException("Letra inválida:"+letra);
 	}
 
+	// Refatoração do método que informa se uma instancia de Mao vence a Mao recebida como parÂmetro
+	// Nome bem mais descritivo do método
 	public boolean vence(Mao outraMao) {
 		return VENCE.get(this) == outraMao;
 	}

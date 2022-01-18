@@ -441,6 +441,58 @@ O fluxo abordado foi:
  - Construímos terceiro teste com verificação de ensuperclasses que falha
  - Refatoramos o código principal e implementamos o necessário para satisfazer o terceiro teste
 
+### Classes
+ - Classes devem ser pequenas
+ - Devem ter somente <b>uma responsabilidade</b> (SRP).
+ - Ter apena sum motivo para mudar
+ - Deve ter coesão interna
+    - Poucas variáveis de instância
+    - Cada método manipula uma variável ou mais. Se um método não manipula atributos dessa classe, provavelmente não deve estar ali.
+ - Deve encapsular seus dados ao máximo
+ - Deve ter baixo <b>acoplamento</b> a outras classes. Lembrar da Lei de Demeter.
+
+#### Exemplo da caso de uso
+
+| Requisitos do Melhor de 3 (Pedra, Papel e Tesoura) |
+|---|
+| 1. Criar uma simulação de dois jogadores jogando "pedra, papel e tesoura" por um número variável de rodadas (3, 5 etc).  |
+| 2. O jogo deve parar se um jogador já for o vencedor antes da última rodada (cenário de vitória antecipada).  |
+| 3. Ao final deve ser indicado o vencedor (ou empate) e listados os resultados de todas as rodadas.  |
+
+<b>Implementação Procedural Simples</b>
+
+Uma resolução procedural encontra-se em [ProceduralMain.java](src/main/java/refactown/cleancode/c10classes/ProceduralMain.java).
+
+Problemas:
+ - Um método faz tudo
+ - Muitos conceitos juntos: Jogador, Match (rodada), Resultados. Deveriam ser separados em classes.
+ - Número de "Rodadas" constantes
+ - Nomes dos jogadores "hard coded"
+ - Não pára em vitória antecipada. Caso um jogador veça as duas primeiras rodadas o jogo deveria acabar.
+
+Questões:
+ - Como se livrar do código legado *PedraPapelTesoura.pedraPapelTesoura*?
+ - A solução é muito procedural?
+ - Como testar isso? Dificuldade de testar é um indicativo de que o código não está bom.
+
+<b>Implementação orientada a Objeto</b>
+
+ ![Possível solução OO](images/classes-modelo-oo.png)
+Refatoração inicial, mantendo ainda a classe legada "PedraTesouraPapel". Implementação iniciando em [ClassesMain.java](src/main/java/refactown/cleancode/c10classes/ClassesMain.java).
+Teste em [JogadaTest](src/test/java/refactown/cleancode/c10classes/model/JogadaTest.java).
+
+##### Solução OO x Procedural
+A solução <b>OO</b> tem mais código, mas cada parte é mais **fácil de entender** que o todo.
+Permite testes de unidade por classe.
+Cada abstração está em uma classe.
+Cada classe tem uma responsabilidade específica.
+A necessidade de <b>manutenção</b> tende a impactar somente uma parte do código.
+
+##### Refatorando
+![Refatoração](images/classes-refatoracao.png)
+Complexidade ciclomática e cognitiva grande em [PedraPapelTesoura.class](src/main/java/refactown/cleancode/c03functions/PedraPapelTesoura.java).
+Na alteração feita para utilizar a implementação "JogadaSimples" em "ClassesMain", a classe "MelhorDeTres" não teve nenhum impacto.
+
 ## Developer
 Kamila Serpa
 
