@@ -521,6 +521,23 @@ Método com leitura semântica e que encapsula um comportamento.
 
 Exemplo: `melhorDeTres.temVencedor()`, pergunta é feita ao *MelhorDeTres* que é a centralização do jogo se ela possui vencedor e não atribuída essa lógica à outra classe.
 
+### Filosofia sobre Simplicidade
+Código simples o suficiente, fácil de entender e possível manter com facilidade. Regras:
+ - Todos os testes devem passar (deve haver testes)
+    - Fazer testes específicos para cada funcionalidade
+ - Nenhuma duplicação de código ou configuração
+ - O código deve expressar o negócio e sua intenção
+ - A solução deve usar o mínimo de elementos
+
+ - Simples não é Simplório (pelo contrário). Pensamento sofisticado sobre o problema que possibilita uma solução simples.
+ - Simplicidade é a sofisticação máxima
+
+![Regras da simplicidade](images/regras-simplicidade.png)
+
+Elementos com responsábilidades específicas. O máximo de expressividade, causa um pouco maior número de objetos e classes. 
+
+![Refatoracaoo](images/simplicidade-refatoracao.png)
+É necessário técnica, treino e tempo para apreender as premissas do clean code.
 
 ## Developer
 Kamila Serpa
