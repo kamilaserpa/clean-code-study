@@ -563,6 +563,20 @@ Ao fazer uma alteração é importante executar novamente os testes.
 Fazer métodos que podemm ser testados (testabilidade).
 Testar o máximo de cenários possíveis (cobertura/coverage).
 
+### Complexidade Ciclomática
+Avalia a complexidade de certo pedaço de código e testabilidade.
+"Complexidade Ciclomática é uma métrica de software que indica a complexidade de um programa" (McCabe, 1976).
+É uma medida de quão difícil é testar uma unidade de código, mede a quantidade máxima de caminhos linearmente independentes no código fonte.
+
+Indica a quantidade de testes para ter uma cobertura próxima de 100%. Cobrindo não necessariamente todos os fluxos possíveis, mas sim todas as arestas/linhas, necessário avaliar cada situação.
+
+1. Relaciona-se com o número de cenários. Quanto maior a complexidade ciclomática em um método, maior tende a ser o número de cenários necessários em um teste deste mesmo método.
+2. Quanto maior o código mais difícil de ler. Maior será a dificuldade de entendimento e o risco de inserção de <b>novos defeitos</b> neste método, aumentando o esforço de manutenção.
+3. A avaliação da Complexidade Ciclomática e implementação deve ser feita ao longo da construção. Complexidade ciclomática serve para acompanhamento da evolução do softwate <b>durante a construção</b>.
+
+<b>Premissao</b>: utilizar ferramenta de Análise Estática de Código. Exemplo: [Sonar](https://www.sonarsource.com/), plugin SonarLint.
+Complexidade Ciclomática deve ser usada para medir a <b>testabilidade</b> de um código ao longo da construção para mantê-lo simples e testável.
+
 ## Developer
 Kamila Serpa
 
