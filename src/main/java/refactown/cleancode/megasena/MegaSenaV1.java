@@ -19,7 +19,7 @@ public class MegaSenaV1 {
      */
     public double calculaPremio(List<Integer> numerosApostados, double premioTotal) {
         List<Integer> numerosValidos = new ArrayList<>();
-        for (Integer apostado : numerosApostados) {
+        for (Integer apostado : numerosApostados) { // Validação
             if (apostado < 1 || apostado > 60) {
                 return 0.0; // inválido
             }
@@ -32,15 +32,15 @@ public class MegaSenaV1 {
         if (numerosValidos.size() >= 6 && numerosValidos.size() <= 15) {
             List<Integer> numerosSorteados = new ArrayList<>();
             int numeroSorteado;
-            while (numerosSorteados.size() < 6) {
-                numeroSorteado = new Random().nextInt(59) + 1;
+            while (numerosSorteados.size() < 6) { // Validação
+                numeroSorteado = new Random().nextInt(59) + 1; // Impossibilidade de teste pois o randômico é imprevisível
                 if (!numerosSorteados.contains(numeroSorteado)) {
                     numerosSorteados.add(numeroSorteado);
                 }
             }
 
             int acertos = 0;
-            for (Integer apostado : numerosApostados) {
+            for (Integer apostado : numerosApostados) { // Cálculo de acertos
                 if (numerosSorteados.contains(apostado)) {
                     acertos++;
                 }
@@ -49,7 +49,7 @@ public class MegaSenaV1 {
             if (acertos == 6) {
                 return premioTotal; // Sena = 100%
             } else if (acertos == 5) {
-                return premioTotal * 0.2; // Quina = 20%
+                return premioTotal * 0.2; // Quina = 20% // Constantes mágicas inseridas no código
             } else if (acertos == 4) {
                 return premioTotal * 0.05; // Quadra = 5%
             }

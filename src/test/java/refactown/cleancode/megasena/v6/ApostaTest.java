@@ -15,6 +15,7 @@ class ApostaTest {
 
     @Test
     void deveDarErroApostaInvalida() {
+        // Teste que prevê Exceção
         assertThrows(IllegalArgumentException.class, () -> { new Aposta(asList(23, 14, 44)); });
         assertThrows(IllegalArgumentException.class, () -> { new Aposta(asList()); });
         List<Integer> maisQue15 = asList(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16);

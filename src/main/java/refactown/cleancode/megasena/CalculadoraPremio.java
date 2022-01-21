@@ -14,6 +14,8 @@ import java.util.Random;
  */
 public class CalculadoraPremio {
 
+    // Nomes de constantes são Caixa Alta com Underline (padrão).
+    // Leitura mais semântica. Possibilidade de ser usada em outros métodos. Alteração facilitada (um ponto do código).
     public static final int ACERTOS_SENA = 6;
     public static final int ACERTOS_QUINA = 5;
     public static final int ACERTOS_QUADRA = 4;
@@ -35,6 +37,7 @@ public class CalculadoraPremio {
         return 0.0;
     }
 
+    // Método deslocado para facilitar a leitura
     private int contaAcertos(List<Integer> numerosApostados, List<Integer> numerosSorteados) {
         int acertos = 0;
         for (Integer apostado : numerosApostados) {

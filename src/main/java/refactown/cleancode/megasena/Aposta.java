@@ -15,7 +15,7 @@ public class Aposta {
     }
 
     public static Aposta of(Integer... numeros) {
-        List<Integer> numerosApostados =Arrays.asList(numeros);
+        List<Integer> numerosApostados = Arrays.asList(numeros);
         return new Aposta(numerosApostados);
     }
 
@@ -23,8 +23,12 @@ public class Aposta {
         return numeros;
     }
 
+
+    // Função com responsabilidade específica. Retorna uma lista com números válidos.
+    // Exception, ou uma lista vazia caso passe apenas nas primeiras validações.
     private List<Integer> validarAposta(List<Integer> numerosApostados) {
         if (numerosApostados.size() < 6) {
+            // Abordagem mais apropriada, retornar Exception em detrimento de um inteiro (0) para aposta inválida
             throw new IllegalArgumentException("A aposta mínima é de 6 números");
         }
         if (numerosApostados.size() > 15) {

@@ -370,6 +370,9 @@ Em kotlin a operação `x = a?.b?.c?.d` garante uma navegação segura pois a li
  - Não retorne nem passe <b>"null"</b>. No kotlin a linguagem já sugere isso dificultando criar propriedades nuláveis. Passar nullo obriga o consumidor do método tratar/verificar esse nulo.
  - Dê preferência às exceções já fornecidas pela linguagem (efective java). Por exemplo, no cálculo da megasena caso algum parâmetro esteja inválido, é indicado retornar `IlegalArgumentException` e não  `ApostaInvalida`, pois dificulta a identificação do erro.
 
+ - Não se deve capturar apenas a Exception genérica, pois é um caso muito amplo
+   `catch (Exception ex) { ... }`
+
 #### Código Ruim - Exemplo 1
 Em [JsonParsing](src\main\kotlin\refactown\cleancode\c07exceptions\JsonParsing.kt):
 
@@ -538,6 +541,27 @@ Elementos com responsábilidades específicas. O máximo de expressividade, caus
 
 ![Refatoracaoo](images/simplicidade-refatoracao.png)
 É necessário técnica, treino e tempo para apreender as premissas do clean code.
+
+### Estudo de caso: Cálculo do Prêmio da Mega Sena
+
+Exemplo de função "suja" em [MegaSenaV1.calculaPremio()](src/main/java/refactown/cleancode/megasena/MegaSenaV1.java). Pois:
+ - É grande
+ - Faz muitas coisas:
+    - Valida os números apostados
+    - Verifica se está entre 6 e 15
+    - Sorteia 6 números
+    - Conta os acertos
+    - Calcula o prêmio
+ - Possui vários níveis de abstração
+
+Fluxo de refatoração em classes MegaSenaVn do pacote [megasena](src/main/java/refactown/cleancode/megasena).
+Classe refatorada responsável pelo cálculo do prêmio: (CalculadoraPremio)[src/main/java/refactown/cleancode/megasena/CalculadoraPremio.java].
+Até a classe [MegaSenaV5](src/main/java/refactown/cleancode/megasena/MegaSenaV5.java) a implementação é realizada através de métodos, para realizar uma refatpração mais orientada a objeto criamos o objeto [Aposta](src/main/java/refactown/cleancode/megasena/Aposta.java).
+Isso melhora a legibilidade. A validação foi transferida para o construtor da Aposta.
+
+Ao fazer uma alteração é importante executar novamente os testes.
+Fazer métodos que podemm ser testados (testabilidade).
+Testar o máximo de cenários possíveis (cobertura/coverage).
 
 ## Developer
 Kamila Serpa
