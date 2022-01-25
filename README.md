@@ -577,6 +577,76 @@ Indica a quantidade de testes para ter uma cobertura próxima de 100%. Cobrindo 
 <b>Premissao</b>: utilizar ferramenta de Análise Estática de Código. Exemplo: [Sonar](https://www.sonarsource.com/), plugin SonarLint.
 Complexidade Ciclomática deve ser usada para medir a <b>testabilidade</b> de um código ao longo da construção para mantê-lo simples e testável.
 
+### Complexidade Cognitiva
+É uma medida de quão difícil é entender uma unidade de código.
+Complexidade Cognitiva (C-Cog) meda a quantidade de quebras de fluxo linear de leitura ponderadas pelo nível de aninhamento dessas quebras.
+Ou seja, é uma medida de quão difpicil é entender uma determinada unidade de código. C-Cog naseia-se em um modelo de percepção subjetiva sobre a dificuldade de entendimento (não matemático).
+
+#### Críticas sobre a Complexidade Ciclomática (CC)
+1. Difereneça entre o valor medido e a real complexidade
+ - Códigos com complexidade bem diferente dão o mesmo valor de CC.
+ - Totalmente baseada no número de caminhos linearmente independentes.
+2. Não leva em consideração aspectos de linguagens mais novas
+ - Lambdas, operadores "null safe" entre outros não são levados em conta.
+3. Valor mínimo de 1 para cada método, mesmo quando são simples
+ - Uma classe com 10 atributos tem CC = 20, apenas com "gets" e "sets" 
+ - Logo, só serve para medição de métodos, rotinas ou funções
+ - Não é possível usar CC para medir classes, módulos ou sistemas
+
+#### Filosofia
+ - Foco no problema do programador (dificuldade de entendimento, não caminhos)
+ - Quebras no fluxo linear aumentam o esforço de entendimento
+ - Aninhamentos aumentam ainda mais o esforço gerado por uma quebra
+ - Incentivo a boas práticas, beneficiando as boas escolhas.
+
+#### Vantagens da Complexidade Cognitiva
+1. Possui score mais acurado, mais sensíveis a mudanças de entendimento
+2. Contempla estrutuas modernas (lambda, safe navigation operator)
+3. Mede níveis acima de método de forma realmente significativa (classe, módulo, pacote, sistema)
+
+Vantagens sobre a <b>Complexidade Ciclomática</b>:
+ - Aplicável a métodos, rotinas e funções, mas também a classes, módulos e sistemas
+ - Baseada na percepção do programador sobre o esforço de entendimento
+ - COnsidera recursos de linguagem mais recentes (e.g.  Lambdas)
+
+Sobre <b>Outras Medidas</b> em geral (cobertura, duplicação etc):
+ - A melhora ocorre com ou sem total compreensão. "Trate primeiro, entenda depois"
+ - Melhorias são mais rapidamente percebidas durante o tratamento do "vazamento".
+
+<b>Desvantagem</b>: nativa do SonarQube, não é a medida padrão de complexidade.
+
+Obs.: Esforçar-se para baixar a complexidade ciclomática pode não resultar em tantas mudanças positivas, já ao melhoras a complexidade cognitiva torna o código mais compreensível de fato.
+Observe que na imagem a complexidade ciclomátiva é a mesma (6), porém a cognitiva é bem diferente e descreve melhor a dificuldade de compreensão real do código.
+![Comparativo entre Ciclomática e Cognitiva](images/exemplo-ciclomatica-cognitiva.png)
+
+#### Metodologia de cálculo da Complexidade Cognitiva
+1. Ignorar Abreviações
+Ignorar estruturas em que várias instruções podem ser abreviadas para apenas uma (incentiva boas práticas).
+Exemplo, null safe conta 0, if conta 1.
+
+2. Incrementar por quebra de Fluxo
+Incrementar um ponto a cada quebra no fluxo linear do código.
++1 ponto para if, else if, else, operador ternário, switch, for, foreach, while, do while, catch, goto LABEL, break LABEL, continue LABEL, sequência de operadores lógicos (&&, || etc) e cada recursão encontrada.
+A quebra do fluxo linear de cima para baixo ou da esquerda para a direita aumenta o esforço necessário de quem precisa ler e manter o software.
+
+3. Incrementar por Aninhamento
+Incrementar um ponto a cada nível de aninhamento de uma quebra de fluxo (além do ponto por quebra)
+
+![Exemplo de cálculo de Complexidade Cognitiva](images/exemplo-calculo-complexidade-cognitiva.png)
+
+##### Tipos de Incremento
+ - Estrutural - avaliado em estruturas de controle de fluxo que estão sujeitas a incremento por aninhamento. Ex.: if, for, while.
+ - Fundamental - avaliado em declarações não sujeitas a aninhamento (sempre conta 1 ponto). Ex.: &&, ||, goto "label", recursão (loop).
+ - Híbrido - avaliado em estruturas de controle de fluxo que não estão sujeitas a incremento por aninhamento (sempre comnta 1 ponto). Causam aninhamento. 
+Ex.: else, else if, elif, etc.
+ - Aninhamento - avaliado em estruturas de controle de fluxo dentro de outras.
+
+
+Obs.: "Return" antecipado (cláusula de guarda) não incrementa nada. Evita aumentar o nível de aninhamento. Ex.: verificação de nulidade. "Clausulas de guarda no início do método são um padrão de implementação". Beck
+
+#### Conclusão
+Complexidade Cognitiva apresenta-se como uma melhor opção em relação à Complexidade Ciclomática como medida de **complexidade** de software.
+
 ## Developer
 Kamila Serpa
 
