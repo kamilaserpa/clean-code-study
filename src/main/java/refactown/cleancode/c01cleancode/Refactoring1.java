@@ -9,12 +9,15 @@ import java.util.List;
 import static java.lang.reflect.Modifier.isFinal;
 import static java.lang.reflect.Modifier.isStatic;
 
+// Contador de propriedades inteiras de uma classe e sua superclasse
 public class Refactoring1 {
 
     public static int countIntConstants(Class<?> clazz) {
+        // Cláusula de guarda
         if (clazz == null || clazz.isEnum() || Modifier.isAbstract(clazz.getModifiers())) {
             return -1;
         }
+
         List<Field> fields = new ArrayList<>();
         for (Field field : clazz.getDeclaredFields()) {
             fields.add(field);

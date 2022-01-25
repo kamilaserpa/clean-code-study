@@ -7,7 +7,7 @@ import java.util.*;
 
 import static java.lang.reflect.Modifier.isFinal;
 import static java.lang.reflect.Modifier.isStatic;
-
+// CC = Complexidade Ciclomática
 public class Refactoring2 {
 
     private static final Set<Class<?>> INTEGER_TYPES = new HashSet<>();

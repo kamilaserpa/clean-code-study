@@ -646,6 +646,7 @@ Obs.: "Return" antecipado (cláusula de guarda) não incrementa nada. Evita aume
 
 #### Conclusão
 Complexidade Cognitiva apresenta-se como uma melhor opção em relação à Complexidade Ciclomática como medida de **complexidade** de software.
+Relaciona-se muito com o Clean Code, fazer funções menores, mais fáceis de compreender, eparando níveis de abstração.
 
 ## Developer
 Kamila Serpa
